@@ -1,7 +1,10 @@
+@import "./variables.scss";
+
 .createChecklistItemContainer {
   display: flex;
   flex-direction: column;
-  border: solid 1px darkblue;
+  border: solid 1px;
+  border-color: $blue;
   width: 400px;
   margin: 2% auto;
   h2 {

@@ -1,5 +1,8 @@
+@import "./variables.scss";
+
 .checklistItemContainer {
-  border: solid 1px green;
+  border: solid 1px;
+  border-color: $green;
   width: 400px;
   margin: 2% auto;
   h2 {
