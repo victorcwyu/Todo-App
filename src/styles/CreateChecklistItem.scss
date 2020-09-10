@@ -1,0 +1,18 @@
+@import "./variables.scss";
+
+.createChecklistItemContainer {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px;
+  border-color: $blue;
+  width: 400px;
+  margin: 2% auto;
+  h2 {
+    text-align: center;
+  }
+  .newItemInput {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 2%;
+  }
+}
