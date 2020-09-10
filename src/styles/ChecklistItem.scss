@@ -1,11 +1,12 @@
 @import "./variables.scss";
 
 .checklistItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border: solid 1px;
   border-color: $green;
   width: 400px;
   margin: 2% auto;
-  h2 {
-    text-align: center;
-  }
+  padding: 2%;
 }
