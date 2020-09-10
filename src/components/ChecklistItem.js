@@ -5,20 +5,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function ChecklistItem(props) {
-  const [checked, setChecked] = useState("");
+  const [checked, setChecked] = useState(props.done);
 
   const handleChange = () => {
-    if (checked === "") {
-      setChecked("checked");
-    } else setChecked("");
+    if (checked === false) {
+      setChecked(true);
+    } else setChecked(false);
   };
 
   return (
     <div className="checklistItemContainer">
       <input type="checkbox" checked={checked} onChange={handleChange} />
-      {checked === "" ? <h2>{props.title}</h2> : <h2>Checked off the list!</h2>}
-      {/* <input type="checkbox" />
-      <h2>{props.title}</h2> */}
+      {checked === false ? (
+        <h2>{props.title}</h2>
+      ) : (
+        <h2>Checked off the list!</h2>
+      )}
       <FontAwesomeIcon icon={faTrash} />
     </div>
   );
