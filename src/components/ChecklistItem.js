@@ -18,7 +18,10 @@ function ChecklistItem(props) {
         ) : (
           <h2>Checked off the list!</h2>
         )}
-        <FontAwesomeIcon icon={faTrash} />
+        <FontAwesomeIcon
+          icon={faTrash}
+          onClick={() => props.deleteItem(props.itemNumber)}
+        />
       </li>
     </div>
   );
