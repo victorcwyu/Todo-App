@@ -66,10 +66,14 @@ function Checklist() {
       cancelButtonColor: "#ce2232",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
+      let deletedItem = checklist[i]["title"];
       if (result.isConfirmed) {
+        checklist.splice(i, 1);
+        localStorage.setItem("checklist", JSON.stringify(checklist));
+        setListArr(checklist);
         Swal.fire(
           "Deleted!",
-          `You've deleted "${checklist[i]["title"]}" from the checklist!`,
+          `You've deleted "${deletedItem}" from the checklist!`,
           "success"
         );
       }
