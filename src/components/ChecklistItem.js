@@ -4,6 +4,8 @@ import "../styles/ChecklistItem.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
+import EditChecklistItem from "./EditChecklistItem";
+
 function ChecklistItem(props) {
   return (
     <div className="checklistItemContainer">
@@ -25,6 +27,14 @@ function ChecklistItem(props) {
         <FontAwesomeIcon
           icon={faTrash}
           onClick={() => props.deleteItem(props.itemNumber)}
+        />
+        <EditChecklistItem
+          // item={props.item}
+          title={props.title}
+          onChange={props.onChange}
+          // onKeyPress={props.onKeyPress}
+          // onClick={props.onClick}
+          // value={props.value}
         />
       </li>
     </div>

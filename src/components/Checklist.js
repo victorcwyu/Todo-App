@@ -33,6 +33,21 @@ function Checklist() {
     }
   };
 
+  const editItem = (e) => {
+    const { name } = e.target;
+    if (e.key === "Enter" || name === "addItem") {
+      if (item.title !== "") {
+        // let foundIndex = items.findIndex((element) => element.id === item.id);
+        // items.splice(foundIndex, 1, item);
+        checklist.unshift(item);
+        localStorage.setItem("checklist", JSON.stringify(checklist));
+        setItem({ title: "", done: false });
+      } else {
+        Swal.fire("Oops...", "Something went wrong!", "error");
+      }
+    }
+  };
+
   listArr =
     listArr.length > 0
       ? listArr
@@ -101,6 +116,11 @@ function Checklist() {
                   done={el.done}
                   completeItem={completeItem}
                   deleteItem={deleteItem}
+                  item={item}
+                  // onKeyPress={editItem}
+                  // onClick={editItem}
+                  // onChange={onEdit}
+                  // value={title}
                 />
               );
             })
