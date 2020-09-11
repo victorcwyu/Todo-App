@@ -50,10 +50,34 @@ function Checklist() {
       setListArr(checklist);
       Swal.fire(
         "Uh oh!",
-        `You've added ${checklist[i]["title"]} back to the checklist!`,
+        `You've added "${checklist[i]["title"]}" back to the checklist!`,
         "warning"
       );
     }
+  };
+
+  const deleteItem = (i) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: `You're about to delete "${checklist[i]["title"]}" from the checklist!`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#219e4a",
+      cancelButtonColor: "#ce2232",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      let deletedItem = checklist[i]["title"];
+      if (result.isConfirmed) {
+        checklist.splice(i, 1);
+        localStorage.setItem("checklist", JSON.stringify(checklist));
+        setListArr(checklist);
+        Swal.fire(
+          "Deleted!",
+          `You've deleted "${deletedItem}" from the checklist!`,
+          "success"
+        );
+      }
+    });
   };
 
   return (
@@ -76,6 +100,7 @@ function Checklist() {
                   title={el.title}
                   done={el.done}
                   completeItem={completeItem}
+                  deleteItem={deleteItem}
                 />
               );
             })
