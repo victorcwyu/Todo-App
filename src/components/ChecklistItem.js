@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/ChecklistItem.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,38 +28,3 @@ function ChecklistItem(props) {
 }
 
 export default ChecklistItem;
-
-//NEWER CODE
-// import React, { useState } from "react";
-// import "../styles/ChecklistItem.scss";
-
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faTrash } from "@fortawesome/free-solid-svg-icons";
-
-// function ChecklistItem(props) {
-//   // const [checked, setChecked] = useState(props.done);
-
-//   // const handleChange = () => {
-//   //   if (checked === false) {
-//   //     setChecked(true);
-//   //   } else setChecked(false);
-//   // };
-
-//   return (
-//     <li key={props.key}>
-//       <input
-//         type="checkbox"
-//         checked={props.done}
-//         onChange={props.completeItem}
-//       />
-//       {props.done === false ? (
-//         <h2>{props.title}</h2>
-//       ) : (
-//         <h2>Checked off the list!</h2>
-//       )}
-//       <FontAwesomeIcon icon={faTrash} />
-//     </li>
-//   );
-// }
-
-// export default ChecklistItem;
