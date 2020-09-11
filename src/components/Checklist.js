@@ -21,7 +21,6 @@ function Checklist() {
   };
 
   const createItem = (e) => {
-    console.log(item, listArr);
     const { name } = e.target;
     if (e.key === "Enter" || name === "addItem") {
       if (item.title !== "") {
@@ -34,10 +33,28 @@ function Checklist() {
     }
   };
 
-  let usableListArr =
+  listArr =
     listArr.length > 0
       ? listArr
       : JSON.parse(localStorage.getItem("checklist"));
+
+  const completeItem = (i) => {
+    if (checklist[i]["done"] !== true) {
+      checklist[i]["done"] = true;
+      localStorage.setItem("checklist", JSON.stringify(checklist));
+      setListArr(checklist);
+      Swal.fire("Sweet!", "Checklist item completed!", "success");
+    } else {
+      checklist[i]["done"] = false;
+      localStorage.setItem("checklist", JSON.stringify(checklist));
+      setListArr(checklist);
+      Swal.fire(
+        "Uh oh!",
+        `You've added ${checklist[i]["title"]} back to the checklist!`,
+        "warning"
+      );
+    }
+  };
 
   return (
     <div className="checklistContainer">
@@ -50,10 +67,18 @@ function Checklist() {
         value={item.title}
       />
       <ul>
-        {usableListArr && usableListArr.length > 0
-          ? usableListArr.map((el, i) => (
-              <ChecklistItem key={i} title={el.title} done={el.done} />
-            ))
+        {listArr && listArr.length > 0
+          ? listArr.map((el, i) => {
+              return (
+                <ChecklistItem
+                  key={i}
+                  itemNumber={i}
+                  title={el.title}
+                  done={el.done}
+                  completeItem={completeItem}
+                />
+              );
+            })
           : null}
       </ul>
     </div>
