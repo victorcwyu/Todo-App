@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/ChecklistItem.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function ChecklistItem(props) {
   return (
@@ -18,6 +18,10 @@ function ChecklistItem(props) {
         ) : (
           <h2>Checked off the list!</h2>
         )}
+        <FontAwesomeIcon
+          icon={faEdit}
+          onClick={() => props.editItem(props.itemNumber)}
+        />
         <FontAwesomeIcon
           icon={faTrash}
           onClick={() => props.deleteItem(props.itemNumber)}
